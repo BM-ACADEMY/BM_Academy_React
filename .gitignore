@@ -8,7 +8,6 @@ __pycache__/
 *.egg-info/
 *.eggs/
 .Python
-.env
 venv/
 env/
 ENV/
@@ -36,24 +35,14 @@ Thumbs.db
 *.tar.gz
 *.zip
 
-# Node / Frontend (if applicable)
+# Node / Frontend
 node_modules/
 build/
 dist/
 
-
-# Django
+# Django extra
 *.pyc
 __pycache__/
 db.sqlite3
-.env
 .env_local
 .env_prod
-
-# React
-client/.env
-client/.env_prod
-admin/.env
-admin/.env_prod
-node_modules/
-dist/
