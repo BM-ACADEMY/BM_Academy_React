@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+*.eggs/
+.Python
+.env
+venv/
+env/
+ENV/
+env.bak/
+.venv/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+media/
+staticfiles/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Render build cache
+*.tar.gz
+*.zip
+
+# Node / Frontend (if applicable)
+node_modules/
+build/
+dist/
+
+
+# Django
+*.pyc
+__pycache__/
+db.sqlite3
+.env
+.env_local
+.env_prod
+
+# React
+client/.env
+client/.env_prod
+admin/.env
+admin/.env_prod
+node_modules/
+dist/
