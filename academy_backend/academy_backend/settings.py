@@ -32,7 +32,14 @@ SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-local-secret")
 DEBUG = os.getenv("DEBUG", "True") == "True"
 
 # ✅ Include your Render backend domain here also
-ALLOWED_HOSTS = ["bm-academybackend.onrender.com", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = [
+    "thebmacademy.com",
+    "www.thebmacademy.com",
+    "82.25.85.114",
+    "localhost",
+    "127.0.0.1"
+]
+
 
 # ------------------------
 # Installed apps
