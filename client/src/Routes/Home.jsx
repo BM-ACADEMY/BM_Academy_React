@@ -8,6 +8,7 @@ import TrendingCourses from '../components/home/TrendingCourses';
 import SACTBanner from '../components/home/CareerGuidance';
 import CallToAction from '../components/home/ActionSection';
 import { LogIn } from 'lucide-react';
+import FloatingWhatsAppButton from '../components/home/FloatingWhatsAppButton';
 
 
 
@@ -22,6 +23,7 @@ const HomeRoutes = () => {
             <TrendingCourses />
             <SACTBanner />
             <CallToAction />
+            <FloatingWhatsAppButton />
             
 
         </div>

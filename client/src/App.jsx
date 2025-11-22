@@ -29,6 +29,9 @@ import PaymentRoutes from "./Routes/Payment";
 // Role-based protection
 import PrivateRoute from "./Routes/PrivateRoute";
 import DM from "./Routes/DM";
+import DA from "./Routes/DA";
+import FSD from "./Routes/Fsd";
+
 
 export const App = () => {
   return (
@@ -47,6 +50,9 @@ export const App = () => {
                 <Route path="/about" element={<Aboutroutes />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/webinar" element={<DM />} />
+                <Route path="/webinar/data-analyst" element={<DA />} />
+                <Route path="/webinar/digital-marketing" element={<DM />} />
+                <Route path="/webinar/fullstack-development" element={<FSD />} />
 
                 
                

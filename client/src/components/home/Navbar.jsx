@@ -9,12 +9,12 @@ export default function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [webinarOpen, setWebinarOpen] = useState(false); // mobile only
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const navLinks = [
     { name: "Courses", path: "/courses" },
-    { name: "Webinar", path: "/webinar" }, // ✅ NEW: Webinar Page
     { name: "SACT Test", external: "https://scat-topaz.vercel.app/Sact.html" },
     { name: "SAT Exam", external: "https://sample-sat.vercel.app/" },
     { name: "About", path: "/about" },
@@ -139,6 +139,38 @@ export default function Navbar() {
             )
           )}
 
+          {/* Webinar Dropdown (Desktop using pure CSS) */}
+          <div className="relative group">
+            <button className="relative text-gray-800 hover:text-yellow-600 font-medium transition duration-200">
+              Webinar
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full"></span>
+            </button>
+
+            <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg border border-gray-100 py-2 z-50 
+                opacity-0 invisible group-hover:opacity-100 group-hover:visible 
+                transition-all duration-200">
+              <Link
+                to="/webinar/digital-marketing"
+                className="block px-4 py-2 hover:bg-yellow-50 text-gray-700"
+              >
+                Digital Marketing
+              </Link>
+
+              <Link
+                to="/webinar/data-analyst"
+                className="block px-4 py-2 hover:bg-yellow-50 text-gray-700"
+              >
+                Data Analyst
+              </Link>
+              <Link
+                to="/webinar/fullstack-development"
+                className="block px-4 py-2 hover:bg-yellow-50 text-gray-700"
+              >
+                FullStack Development
+              </Link>
+            </div>
+          </div>
+
           {/* Profile / Auth Buttons */}
           <div className="ml-8 flex items-center space-x-4">
             {isLoggedIn ? (
@@ -230,6 +262,37 @@ export default function Navbar() {
               </Link>
             )
           )}
+
+          {/* Webinar Dropdown - Mobile (clickable) */}
+          <div className="flex flex-col">
+            <button
+              onClick={() => setWebinarOpen(!webinarOpen)}
+              className="text-gray-700 font-medium flex justify-between items-center"
+            >
+              Webinar
+              <span>{webinarOpen ? "-" : "+"}</span>
+            </button>
+
+            {webinarOpen && (
+              <div className="flex flex-col pl-4 mt-2 space-y-2">
+                <Link
+                  to="/webinar/digital-marketing"
+                  onClick={() => setIsOpen(false)}
+                  className="text-gray-600 hover:text-yellow-600"
+                >
+                  Digital Marketing
+                </Link>
+
+                <Link
+                  to="/webinar/data-analyst"
+                  onClick={() => setIsOpen(false)}
+                  className="text-gray-600 hover:text-yellow-600"
+                >
+                  Data Analyst
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="border-t border-gray-100 mt-4 p-5 bg-white">
@@ -243,6 +306,7 @@ export default function Navbar() {
                 <FaUserCircle size={26} />
                 <span>Dashboard</span>
               </Link>
+
               <button
                 onClick={() => {
                   handleLogout();
@@ -260,6 +324,7 @@ export default function Navbar() {
                   Login
                 </button>
               </Link>
+
               <Link to="/signup" onClick={() => setIsOpen(false)}>
                 <button className="w-full h-[46px] rounded-lg border border-yellow-500 text-yellow-600 font-semibold bg-white hover:bg-yellow-500 hover:text-white shadow-sm hover:shadow-lg transition-all duration-300">
                   Sign Up
