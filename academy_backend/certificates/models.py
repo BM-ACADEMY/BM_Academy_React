@@ -7,6 +7,14 @@ class Certificate(Document):
     course_id = StringField(required=True)  # MongoDB ObjectId as string
     certificate_id = StringField(required=True, unique=True)
     issue_date = DateTimeField(default=datetime.datetime.utcnow)
-    file_url = StringField()  # store PDF file URL (instead of FileField)
+    file_url = StringField()
 
-    meta = {"collection": "certificates"}  # ensures MongoDB stores in this collection
+    # Optional fields (your MongoDB documents contain these)
+    manual_name = StringField()
+    manual_course = StringField()
+    certificate_type = StringField()
+
+    meta = {
+        "collection": "certificates",
+        "strict": False   # <-- IMPORTANT: Allow unknown fields
+    }

@@ -34,10 +34,12 @@ DEBUG = os.getenv("DEBUG", "True") == "True"
 # ✅ Include your Render backend domain here also
 ALLOWED_HOSTS = [
     "thebmacademy.com",
+    "certificate.thebmacademy.com",
     "www.thebmacademy.com",
     "82.25.85.114",
     "localhost",
-    "127.0.0.1"
+    "127.0.0.1",
+    "[2a02:4780:2d:430::1]",
 ]
 
 
@@ -122,6 +124,13 @@ if MONGO_ENV == "atlas":
 else:
     MONGO_URI = os.getenv("MONGO_LOCAL_URI")
 
+# ------------------------
+# Connect to MongoDB
+# ------------------------
+if MONGO_URI:
+    connect(host=MONGO_URI, alias="default")
+else:
+    print("⚠️ No MongoDB URI found in environment")
 
 
 # ------------------------
@@ -186,6 +195,10 @@ CORS_ALLOWED_ORIGINS = [
     # optional local dev
     "http://localhost:5173",
     "http://localhost:5174",
+    "http://localhost:5175",
+    "https://certificate.thebmacademy.com",
+    "https://thebmacademy.com",
+    "http://82.25.85.114:8000",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -194,6 +207,8 @@ CSRF_TRUSTED_ORIGINS = [
     # optional local dev
     "http://localhost:5173",
     "http://localhost:5174",
+    "https://certificate.thebmacademy.com",
+    "https://thebmacademy.com",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -221,7 +236,6 @@ SIMPLE_JWT = {
 # ------------------------
 RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID")
 RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET")
-
 
 
 # Email Configuration

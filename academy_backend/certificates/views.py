@@ -144,10 +144,12 @@ class CertificateViewSet(viewsets.ViewSet):
         return Response({"data": data}, status=200)
 
 
-# -------------------------------
-# VERIFY CERTIFICATE
-# -------------------------------
+from rest_framework.permissions import AllowAny
+from rest_framework.decorators import permission_classes, authentication_classes
+
 @api_view(["GET"])
+@permission_classes([AllowAny])
+@authentication_classes([])
 def verify_certificate(request, certificate_id):
     cert = Certificate.objects(certificate_id=certificate_id).first()
     if not cert:
@@ -182,6 +184,8 @@ def verify_certificate(request, certificate_id):
 # DOWNLOAD CERTIFICATE
 # -------------------------------
 @api_view(["GET"])
+@permission_classes([AllowAny])
+@authentication_classes([])
 def download_certificate(request, certificate_id):
     cert = Certificate.objects(certificate_id=certificate_id).first()
     if not cert:
